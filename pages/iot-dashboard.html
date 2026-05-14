@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IoT Dashboard Pro+｜狐狸小站</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html"><span class="logo-mark">🦊</span><span>狐狸小站</span></a>
+      <div class="nav-links"><a href="../pages/google.html">Google</a><a href="../pages/yahoo.html">Yahoo奇摩</a><a href="../pages/github.html">GitHub</a><a href="../pages/firebase.html">Firebase</a><a href="../pages/mqtt-publisher.html">MQTT 測試發佈器</a><a href="../pages/iot-dashboard.html">IoT Dashboard Pro+</a></div>
+    </div>
+  </nav>
+
+  <header class="detail-hero">
+    <div class="container">
+      <a class="breadcrumb" href="../index.html">← 回到首頁</a>
+      <div class="eyebrow">IoT 儀表板</div>
+      <h1>IoT Dashboard Pro+</h1>
+      <p class="lead">IoT Dashboard Pro+ 用於即時監控 DHT22 溫濕度資料與 i 值，支援 MQTT Broker 連線、即時曲線圖、歷史紀錄、統計與 CSV 匯出。</p>
+      <div class="button-row" style="margin-top:22px">
+        <a class="btn primary" href="https://fox520-sketch.github.io/iot-dashboard/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+        <a class="btn ghost" href="../index.html">回首頁看全部網站</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container detail-layout">
+    <section class="panel">
+      <h2>主要功能</h2>
+      <ul class="feature-list"><li><strong>連線與訂閱</strong><span>可連線 Broker 並訂閱溫度、濕度與 i 值 Topic。</span></li><li><strong>即時監控卡片</strong><span>顯示目前溫度、濕度、i 值與最後更新時間。</span></li><li><strong>曲線與歷史資料</strong><span>提供溫濕度即時曲線圖與資料歷史紀錄。</span></li><li><strong>統計與匯出</strong><span>顯示最大、最小、平均等統計，並支援 CSV 匯出。</span></li></ul>
+    </section>
+
+    <aside class="panel comments" data-site="iot-dashboard">
+      <h3>IoT Dashboard Pro+ 留言板</h3>
+      <p class="hint">這裡的留言只屬於「IoT Dashboard Pro+」頁面，並儲存在你的瀏覽器本機。</p>
+      <form>
+        <label>你的名字<input name="name" placeholder="例如：Fox" required></label>
+        <label>留言內容<textarea name="message" placeholder="寫下你對 IoT Dashboard Pro+ 的想法..." required></textarea></label>
+        <div class="button-row">
+          <button class="btn primary" type="submit">送出留言</button>
+          <button class="btn ghost" type="button" data-clear>清除留言</button>
+        </div>
+      </form>
+      <div class="comment-list"></div>
+    </aside>
+  </main>
+
+  <footer class="footer"><div class="container">狐狸小站 · IoT Dashboard Pro+</div></footer>
+  <script src="../assets/app.js"></script>
+</body>
+</html>
