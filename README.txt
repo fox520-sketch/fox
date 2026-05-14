@@ -28,3 +28,9 @@ GitHub Pages 修正版：
 - 這版已針對 repository 網址 /fox/ 修正。
 - CSS、JS、QR 圖片路徑改為 /fox/assets/...，比較不容易在 GitHub Pages 子路徑下失效。
 - 上傳時請務必把 index.html、assets/、pages/ 三個項目放在 repository 最外層。
+
+
+本次新增：
+- 首頁每個網站卡片加入「複製網址」按鈕
+- 每個獨立介紹頁加入「複製網址」按鈕
+- QR Code 區塊加入「複製首頁網址」按鈕

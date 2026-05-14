@@ -56,3 +56,46 @@ document.querySelectorAll('.comments').forEach((box) => {
 
   render();
 });
+
+
+const copyText = async (text) => {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      return true;
+    }
+  } catch (error) {
+    // Fallback below
+  }
+
+  const input = document.createElement('textarea');
+  input.value = text;
+  input.setAttribute('readonly', '');
+  input.style.position = 'fixed';
+  input.style.left = '-9999px';
+  input.style.top = '-9999px';
+  document.body.appendChild(input);
+  input.focus();
+  input.select();
+  let ok = false;
+  try {
+    ok = document.execCommand('copy');
+  } catch (error) {
+    ok = false;
+  }
+  input.remove();
+  return ok;
+};
+
+document.querySelectorAll('[data-copy-url]').forEach((button) => {
+  button.addEventListener('click', async () => {
+    const original = button.textContent;
+    const ok = await copyText(button.dataset.copyUrl || '');
+    button.textContent = ok ? '已複製' : '複製失敗';
+    button.classList.toggle('copied', ok);
+    setTimeout(() => {
+      button.textContent = original;
+      button.classList.remove('copied');
+    }, 1600);
+  });
+});

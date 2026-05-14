@@ -63,6 +63,8 @@ h1{margin:18px 0 16px;font-size:clamp(42px,7vw,82px);line-height:1.02;letter-spa
 .btn:hover{transform:translateY(-2px)}
 .btn.primary{color:#fff;background:linear-gradient(135deg,#0f7fc1,#1dbbb2);box-shadow:0 12px 26px rgba(13,136,199,.2)}
 .btn.ghost{color:var(--deep);background:rgba(255,255,255,.75);border:1px solid var(--line)}
+.btn.copy{color:var(--deep);background:rgba(255,255,255,.88);border:1px solid rgba(32,199,189,.34)}
+.btn.copied{color:#fff;background:linear-gradient(135deg,#12a3cc,#20c7bd);box-shadow:0 12px 26px rgba(13,136,199,.18)}
 .detail-hero{padding:62px 0 34px}
 .breadcrumb{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--muted);font-weight:850;margin-bottom:18px}
 .detail-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.72fr);gap:24px;align-items:start;padding-bottom:76px}
@@ -81,3 +83,6 @@ h1{margin:18px 0 16px;font-size:clamp(42px,7vw,82px);line-height:1.02;letter-spa
 .qr-panel{display:grid;place-items:center;text-align:center}
 .qr-panel .qr-image{width:180px}
 .qr-stack{display:grid;gap:12px;justify-items:center}
+
+.qr-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
+.qr-actions .btn{padding:10px 13px;font-size:14px}
