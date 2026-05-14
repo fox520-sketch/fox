@@ -20,6 +20,11 @@
 - 首頁與各獨立頁面都已加入 QR Code 區塊
 
 目前 QR Code 預設連結：
-- https://fox520-sketch.github.io/fox-station/
+- https://fox520-sketch.github.io/fox/
 
 如果你之後更改 GitHub repository 名稱，請同步更新 HTML 內的網址與重新產生 QR Code。
+
+GitHub Pages 修正版：
+- 這版已針對 repository 網址 /fox/ 修正。
+- CSS、JS、QR 圖片路徑改為 /fox/assets/...，比較不容易在 GitHub Pages 子路徑下失效。
+- 上傳時請務必把 index.html、assets/、pages/ 三個項目放在 repository 最外層。

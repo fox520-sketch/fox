@@ -3,63 +3,143 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MQTT 測試發佈器｜狐狸小站</title>
-  <link rel="stylesheet" href="../assets/styles.css" />
+  <title>狐狸小站</title>
+  <link rel="stylesheet" href="/fox/assets/styles.css" />
 </head>
 <body>
   <nav class="site-nav">
     <div class="container nav-inner">
-      <a class="brand" href="../index.html"><span class="logo-mark">🦊</span><span>狐狸小站</span></a>
-      <div class="nav-links"><a href="../pages/google.html">Google</a><a href="../pages/yahoo.html">Yahoo奇摩</a><a href="../pages/github.html">GitHub</a><a href="../pages/firebase.html">Firebase</a><a href="../pages/mqtt-publisher.html">MQTT 測試發佈器</a><a href="../pages/iot-dashboard.html">IoT Dashboard Pro+</a></div>
+      <a class="brand" href="/fox/"><span class="logo-mark">🦊</span><span>狐狸小站</span></a>
+      <div class="nav-links"><a href="#site-google">Google</a><a href="#site-yahoo">Yahoo奇摩</a><a href="#site-github">GitHub</a><a href="#site-firebase">Firebase</a><a href="#site-mqtt-publisher">MQTT 測試發佈器</a><a href="#site-iot-dashboard">IoT Dashboard Pro+</a></div>
     </div>
   </nav>
 
-  <header class="detail-hero">
-    <div class="container">
-      <a class="breadcrumb" href="../index.html">← 回到首頁</a>
-      <div class="eyebrow">MQTT 測試工具</div>
-      <h1>MQTT 測試發佈器</h1>
-      <p class="lead">MQTT 測試發佈器可連線到指定 Broker，手動或自動送出溫度、濕度與 i 值資料，方便測試 Dashboard 訂閱資料是否正常。</p>
-      <div class="button-row" style="margin-top:22px">
-        <a class="btn primary" href="https://fox520-sketch.github.io/mqtt-publisher/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
-        <a class="btn ghost" href="../index.html">回首頁看全部網站</a>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">簡約清爽海洋風 · 網站收藏入口</div>
+        <h1>狐狸小站，收藏你常用的網站。</h1>
+        <p class="lead">首頁可直接前往每個原網站，也能進入各自的介紹與留言頁。整體以海洋藍、青綠泡沫、白色玻璃卡片打造清爽版面。</p>
       </div>
+      <aside class="hero-card">
+        <div class="float-item"><strong>6 個網站</strong><span>搜尋、入口、開發、IoT 工具</span></div>
+        <div class="float-item"><strong>首頁直連</strong><span>一鍵開啟原網站</span></div>
+        <div class="float-item"><strong>獨立頁面</strong><span>每站各自介紹與留言</span></div>
+        <div class="float-item"><strong>留言保存</strong><span>localStorage 本機儲存</span></div>
+        <div class="qr-card">
+          <a class="qr-link" href="https://fox520-sketch.github.io/fox/" target="_blank" rel="noopener noreferrer">
+            <img class="qr-image" src="/fox/assets/qr-fox-station.png" alt="狐狸小站首頁 QR Code" />
+          </a>
+          <h3>狐狸小站 QR Code</h3>
+          <p>掃描後可直接開啟狐狸小站首頁。</p>
+          <a class="qr-url" href="https://fox520-sketch.github.io/fox/" target="_blank" rel="noopener noreferrer">https://fox520-sketch.github.io/fox/</a>
+        </div>
+      </aside>
     </div>
   </header>
 
-  <main class="container detail-layout">
-    <section class="panel">
-      <h2>主要功能</h2>
-      <ul class="feature-list"><li><strong>Broker 連線</strong><span>支援設定 WebSocket URL，連線或中斷 Broker。</span></li><li><strong>Topic 設定</strong><span>可針對溫度、濕度與 i 值設定發佈 Topic。</span></li><li><strong>手動與自動發送</strong><span>可以送出單筆資料，也能啟動自動模擬模式。</span></li><li><strong>統計與 CSV</strong><span>記錄送出次數，並可匯出送出紀錄 CSV。</span></li></ul>
+  <div class="wave-divider"></div>
+
+  <main class="container">
+    <section class="section-title">
+      <h2>網站入口</h2>
+      <p>每張卡片都有「直接前往網站」與「介紹與留言」。</p>
     </section>
-
-    <aside class="panel qr-panel">
-      <div class="qr-stack">
-        <a class="qr-link" href="https://fox520-sketch.github.io/fox-station/" target="_blank" rel="noopener noreferrer">
-          <img class="qr-image" src="../assets/qr-fox-station.png" alt="狐狸小站首頁 QR Code" />
-        </a>
-        <h3>狐狸小站 QR Code</h3>
-        <p>掃描後可直接開啟狐狸小站首頁。</p>
-        <a class="qr-url" href="https://fox520-sketch.github.io/fox-station/" target="_blank" rel="noopener noreferrer">https://fox520-sketch.github.io/fox-station/</a>
-      </div>
-    </aside>
-
-    <aside class="panel comments" data-site="mqtt-publisher">
-      <h3>MQTT 測試發佈器 留言板</h3>
-      <p class="hint">這裡的留言只屬於「MQTT 測試發佈器」頁面，並儲存在你的瀏覽器本機。</p>
-      <form>
-        <label>你的名字<input name="name" placeholder="例如：Fox" required></label>
-        <label>留言內容<textarea name="message" placeholder="寫下你對 MQTT 測試發佈器 的想法..." required></textarea></label>
-        <div class="button-row">
-          <button class="btn primary" type="submit">送出留言</button>
-          <button class="btn ghost" type="button" data-clear>清除留言</button>
+    <section class="card-grid">
+      
+      <article class="site-card" id="site-google">
+        <div class="card-head">
+          <div>
+            <div class="tag">搜尋入口</div>
+            <h3>Google</h3>
+          </div>
+          <div class="site-icon">G</div>
         </div>
-      </form>
-      <div class="comment-list"></div>
-    </aside>
+        <p>以搜尋為核心的網站入口，可搜尋網頁、圖片、影片與各種公開資訊。</p>
+        <div class="button-row">
+          <a class="btn primary" href="https://www.google.com/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+          <a class="btn ghost" href="/fox/pages/google.html">介紹與留言</a>
+        </div>
+      </article>
+    
+      <article class="site-card" id="site-yahoo">
+        <div class="card-head">
+          <div>
+            <div class="tag">台灣入口網站</div>
+            <h3>Yahoo奇摩</h3>
+          </div>
+          <div class="site-icon">Y</div>
+        </div>
+        <p>整合新聞、氣象、搜尋、信箱、股市、購物與生活資訊的一站式入口。</p>
+        <div class="button-row">
+          <a class="btn primary" href="https://tw.yahoo.com/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+          <a class="btn ghost" href="/fox/pages/yahoo.html">介紹與留言</a>
+        </div>
+      </article>
+    
+      <article class="site-card" id="site-github">
+        <div class="card-head">
+          <div>
+            <div class="tag">程式碼協作平台</div>
+            <h3>GitHub</h3>
+          </div>
+          <div class="site-icon">GH</div>
+        </div>
+        <p>用於程式碼託管、協作、Issue、Actions、自動化與安全管理的平台。</p>
+        <div class="button-row">
+          <a class="btn primary" href="https://github.com/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+          <a class="btn ghost" href="/fox/pages/github.html">介紹與留言</a>
+        </div>
+      </article>
+    
+      <article class="site-card" id="site-firebase">
+        <div class="card-head">
+          <div>
+            <div class="tag">App 開發平台</div>
+            <h3>Firebase</h3>
+          </div>
+          <div class="site-icon">F</div>
+        </div>
+        <p>Google 的行動與網頁 App 開發平台，協助建置、執行、擴充與改善 App。</p>
+        <div class="button-row">
+          <a class="btn primary" href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+          <a class="btn ghost" href="/fox/pages/firebase.html">介紹與留言</a>
+        </div>
+      </article>
+    
+      <article class="site-card" id="site-mqtt-publisher">
+        <div class="card-head">
+          <div>
+            <div class="tag">MQTT 測試工具</div>
+            <h3>MQTT 測試發佈器</h3>
+          </div>
+          <div class="site-icon">MQ</div>
+        </div>
+        <p>用來測試 IoT Dashboard 是否有正確收到 MQTT 資料。</p>
+        <div class="button-row">
+          <a class="btn primary" href="https://fox520-sketch.github.io/mqtt-publisher/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+          <a class="btn ghost" href="/fox/pages/mqtt-publisher.html">介紹與留言</a>
+        </div>
+      </article>
+    
+      <article class="site-card" id="site-iot-dashboard">
+        <div class="card-head">
+          <div>
+            <div class="tag">IoT 儀表板</div>
+            <h3>IoT Dashboard Pro+</h3>
+          </div>
+          <div class="site-icon">IoT</div>
+        </div>
+        <p>DHT22 即時監控，包含曲線圖、歷史資料、統計、CSV 匯出、手機版與全螢幕。</p>
+        <div class="button-row">
+          <a class="btn primary" href="https://fox520-sketch.github.io/iot-dashboard/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+          <a class="btn ghost" href="/fox/pages/iot-dashboard.html">介紹與留言</a>
+        </div>
+      </article>
+    
+    </section>
   </main>
 
-  <footer class="footer"><div class="container">狐狸小站 · MQTT 測試發佈器</div></footer>
-  <script src="../assets/app.js"></script>
+  <footer class="footer"><div class="container">狐狸小站 · 簡約清爽海洋風網站收藏頁</div></footer>
 </body>
 </html>
