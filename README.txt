@@ -4,7 +4,7 @@
 這是一個簡約清爽海洋風的靜態網站收藏頁。
 
 檔案結構：
-- index.html：首頁，包含 6 個網站卡片與原網站直連按鈕
+- index.html：首頁，包含 7 個網站卡片與原網站直連按鈕
 - pages/：每個網站的獨立介紹與留言頁
 - assets/styles.css：共用樣式
 - assets/app.js：留言功能，使用 localStorage 儲存在使用者瀏覽器本機
@@ -34,3 +34,10 @@ GitHub Pages 修正版：
 - 首頁每個網站卡片加入「複製網址」按鈕
 - 每個獨立介紹頁加入「複製網址」按鈕
 - QR Code 區塊加入「複製首頁網址」按鈕
+
+
+本版新增：
+- Napoleon3 已新增為第一個首頁卡片
+- 新增 pages/napoleon3.html 獨立介紹與留言頁
+- Napoleon3 卡片與頁面都支援「複製網址」
+- 網址：https://fox520-sketch.github.io/napoleon3/
