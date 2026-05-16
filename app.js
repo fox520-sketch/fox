@@ -1027,21 +1027,15 @@ function cardStrength(card, game, leadSuit) {
 }
 
 function endRound(game) {
-  const teamSeats = new Set([game.napoleon]);
-  if (game.secretaryOwner !== null && game.secretaryOwner !== undefined) teamSeats.add(game.secretaryOwner);
-  let teamHeads = 0;
-  let defenderHeads = 0;
-  game.captured.forEach((cards, seat) => {
-    const heads = countPoints(cards || []);
-    if (teamSeats.has(seat)) teamHeads += heads;
-    else defenderHeads += heads;
-  });
-  const buriedHeads = countPoints(game.buried || []);
-  if (game.settings?.buriedMode === "defenders") defenderHeads += buriedHeads;
-  else if (game.settings?.buriedMode !== "addContract") teamHeads += buriedHeads;
+  const totals = calculateHeadTotals(game);
+  const teamHeads = totals.teamHeads;
+  const defenderHeads = totals.defenderHeads;
+  const buriedHeads = totals.buriedHeads;
+  const contract = totals.contract;
+  game.contract = contract;
 
-  const made = teamHeads >= game.contract;
-  const diff = Math.abs(teamHeads - game.contract);
+  const made = teamHeads >= contract;
+  const diff = Math.abs(teamHeads - contract);
   const solo = game.secretaryOwner === game.napoleon;
   const base = (solo ? 160 : 100) + diff * 10;
   const napDelta = made ? base : -base;
@@ -1061,14 +1055,14 @@ function endRound(game) {
     teamHeads,
     defenderHeads,
     buriedHeads,
-    contract: game.contract,
+    contract,
     scoreDeltas,
     endedAt: Date.now()
   };
   game.phase = PHASE.ROUND_END;
   game.currentPlayer = null;
   game.secretaryRevealed = true;
-  appendLog(game, `${made ? "拿破崙軍達標" : "聯合國守成"}：拿破崙軍 ${teamHeads} 頭，成約 ${game.contract} 頭。`);
+  appendLog(game, `${made ? "拿破崙軍達標" : "聯合國守成"}：拿破崙軍 ${teamHeads} 頭，成約 ${contract} 頭。`);
 }
 
 async function saveGame(game) {
@@ -1345,28 +1339,39 @@ function teamOf(game, seat) {
   return "def";
 }
 
-function calculateRoundResult(game) {
-  if (!game || game.napoleon === null || game.napoleon === undefined || !game.contract) return null;
+function calculateHeadTotals(game) {
+  const bidAmount = getBidAmount(game);
+  const buriedHeads = countPoints(game?.buried || []);
+  const rawContract = game?.settings?.buriedMode === "addContract"
+    ? bidAmount + buriedHeads
+    : (Number(game?.contract || 0) || bidAmount);
+  const contract = Math.min(16, rawContract);
   const teamSeats = new Set([game.napoleon]);
   if (game.secretaryOwner !== null && game.secretaryOwner !== undefined) teamSeats.add(game.secretaryOwner);
   let teamHeads = 0;
   let defenderHeads = 0;
   (game.captured || []).forEach((cards, seat) => {
     const heads = countPoints(cards || []);
-    if (teamSeats.has(seat)) teamHeads += heads;
+    if (teamSeats.has(Number(seat))) teamHeads += heads;
     else defenderHeads += heads;
   });
-  const buriedHeads = countPoints(game.buried || []);
   if (game.settings?.buriedMode === "defenders") defenderHeads += buriedHeads;
   else if (game.settings?.buriedMode !== "addContract") teamHeads += buriedHeads;
-  const made = teamHeads >= game.contract;
+  return { teamHeads, defenderHeads, buriedHeads, contract };
+}
+
+function calculateRoundResult(game) {
+  if (!game || game.napoleon === null || game.napoleon === undefined) return null;
+  const totals = calculateHeadTotals(game);
+  if (!totals.contract) return null;
+  const made = totals.teamHeads >= totals.contract;
   return {
     made,
     winningTeam: made ? "nap" : "def",
-    teamHeads,
-    defenderHeads,
-    buriedHeads,
-    contract: game.contract,
+    teamHeads: totals.teamHeads,
+    defenderHeads: totals.defenderHeads,
+    buriedHeads: totals.buriedHeads,
+    contract: totals.contract,
     scoreDeltas: game.roundResult?.scoreDeltas || [],
     endedAt: game.roundResult?.endedAt || game.createdAt || Date.now()
   };
@@ -1394,7 +1399,8 @@ function renderRoundResultAnimation(game) {
     return;
   }
   const seat = myGameSeat(game);
-  const result = game.roundResult || calculateRoundResult(game);
+  // 永遠從實際吃牌與底牌重新計算頭數；舊版 roundResult 只保留分數與時間，避免顯示成 2/11 這類舊統計錯誤。
+  const result = calculateRoundResult(game) || game.roundResult;
   if (seat === null || !result) {
     overlay.classList.remove("show", "win", "lose");
     overlay.classList.add("hidden");
@@ -1691,8 +1697,16 @@ function suitName(suit) {
   return SUITS[suit]?.name || "未定";
 }
 
+function isHeadCard(card) {
+  if (!card) return false;
+  if (card.point === true) return true;
+  if (POINT_RANKS.has(card.rank)) return true;
+  const id = String(card.id || "");
+  return /^(S|H|D|C)(A|K|Q|J)$/.test(id);
+}
+
 function countPoints(cards) {
-  return (cards || []).filter((c) => c.point).length;
+  return (cards || []).filter(isHeadCard).length;
 }
 
 function findCardById(id) {
