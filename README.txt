@@ -31,3 +31,8 @@ Firebase 留言板：
 
 
 重要：如果留言顯示「被安全規則拒絕」，請到 Firebase Firestore Rules 貼上並發布本 ZIP 內新版 firestore.rules。
+
+
+新增功能：
+- 可切換主題風格：海洋風、護眼風、電子紙風、森林風、草原風、櫻花風、暮光風、月光風
+- 使用 localStorage 記住主題選擇，跨頁面保持一致

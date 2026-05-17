@@ -4,12 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IoT Dashboard Pro+｜狐狸網路遊戲之家</title>
+  <script>document.documentElement.dataset.theme = localStorage.getItem("fox-theme") || "ocean";</script>
   <link rel="stylesheet" href="/fox/assets/styles.css" />
 </head>
 <body>
   <nav class="site-nav">
     <div class="container nav-inner">
       <a class="brand" href="/fox/"><span class="logo-mark">🦊</span><span>狐狸網路遊戲之家</span></a>
+      <div class="theme-switcher">
+        <label for="theme-select">風格主題</label>
+        <select id="theme-select" data-theme-select aria-label="選擇網站風格"></select>
+      </div>
       <div class="nav-links"><a href="/fox/pages/napoleon3.html">拿破崙與秘書</a><a href="/fox/pages/mqtt-publisher.html">MQTT 測試發佈器</a><a href="/fox/pages/iot-dashboard.html">IoT Dashboard Pro+</a></div>
     </div>
   </nav>
@@ -20,6 +25,7 @@
       <div class="eyebrow">IoT 儀表板</div>
       <h1>IoT Dashboard Pro+</h1>
       <p class="lead">IoT Dashboard Pro+ 是 DHT22 即時監控頁，可呈現溫濕度資料、曲線圖、歷史紀錄與統計資訊，也支援 CSV 匯出與全螢幕展示。</p>
+      <p class="theme-note">可從上方選擇海洋、護眼、電子紙、森林、草原、櫻花、暮光與月光等風格，系統會自動記住你的設定。</p>
       <div class="button-row" style="margin-top:22px">
         <a class="btn primary" href="https://fox520-sketch.github.io/iot-dashboard/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
         <button class="btn copy" type="button" data-copy-url="https://fox520-sketch.github.io/iot-dashboard/">複製網址</button>

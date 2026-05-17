@@ -1,3 +1,4 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
 import {
@@ -26,6 +27,48 @@ const NAME_MAX = 30;
 const MESSAGE_MAX = 300;
 const ALLOWED_SITES = new Set(["napoleon3", "mqtt-publisher", "iot-dashboard"]);
 const TIME_ZONE = "Asia/Taipei";
+const THEME_KEY = 'fox-theme';
+const DEFAULT_THEME = 'ocean';
+const THEMES = [
+  ['ocean', '海洋風'],
+  ['eye-care', '護眼風'],
+  ['e-ink', '電子紙風'],
+  ['forest', '森林風'],
+  ['grassland', '草原風'],
+  ['sakura', '櫻花風'],
+  ['twilight', '暮光風'],
+  ['moonlight', '月光風']
+];
+
+const applyTheme = (theme) => {
+  const valid = THEMES.some(([value]) => value === theme) ? theme : DEFAULT_THEME;
+  document.documentElement.dataset.theme = valid;
+  try { localStorage.setItem(THEME_KEY, valid); } catch {}
+  document.querySelectorAll('[data-theme-select]').forEach((select) => {
+    if (select.value !== valid) select.value = valid;
+  });
+  const label = THEMES.find(([value]) => value === valid)?.[1] || '海洋風';
+  document.querySelectorAll('[data-theme-current]').forEach((el) => {
+    el.textContent = label;
+  });
+};
+
+const initializeThemeControls = () => {
+  document.querySelectorAll('[data-theme-select]').forEach((select) => {
+    if (!select.options.length) {
+      THEMES.forEach(([value, label]) => {
+        const option = document.createElement('option');
+        option.value = value;
+        option.textContent = label;
+        select.appendChild(option);
+      });
+    }
+    select.addEventListener('change', () => applyTheme(select.value));
+  });
+  let saved = DEFAULT_THEME;
+  try { saved = localStorage.getItem(THEME_KEY) || document.documentElement.dataset.theme || DEFAULT_THEME; } catch { saved = document.documentElement.dataset.theme || DEFAULT_THEME; }
+  applyTheme(saved);
+};
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -80,9 +123,7 @@ const copyText = async (text) => {
       await navigator.clipboard.writeText(text);
       return true;
     }
-  } catch (error) {
-    // Fallback below
-  }
+  } catch (error) {}
 
   const input = document.createElement('textarea');
   input.value = text;
@@ -94,14 +135,12 @@ const copyText = async (text) => {
   input.focus();
   input.select();
   let ok = false;
-  try {
-    ok = document.execCommand('copy');
-  } catch (error) {
-    ok = false;
-  }
+  try { ok = document.execCommand('copy'); } catch (error) { ok = false; }
   input.remove();
   return ok;
 };
+
+initializeThemeControls();
 
 document.querySelectorAll('[data-copy-url]').forEach((button) => {
   button.addEventListener('click', async () => {

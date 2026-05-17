@@ -4,12 +4,17 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>狐狸網路遊戲之家</title>
+  <script>document.documentElement.dataset.theme = localStorage.getItem("fox-theme") || "ocean";</script>
   <link rel="stylesheet" href="/fox/assets/styles.css" />
 </head>
 <body>
   <nav class="site-nav">
     <div class="container nav-inner">
       <a class="brand" href="/fox/"><span class="logo-mark">🦊</span><span>狐狸網路遊戲之家</span></a>
+      <div class="theme-switcher">
+        <label for="theme-select">風格主題</label>
+        <select id="theme-select" data-theme-select aria-label="選擇網站風格"></select>
+      </div>
       <div class="nav-links"><a href="#site-napoleon3">拿破崙與秘書</a><a href="#site-mqtt-publisher">MQTT 測試發佈器</a><a href="#site-iot-dashboard">IoT Dashboard Pro+</a></div>
     </div>
   </nav>
@@ -17,15 +22,16 @@
   <header class="hero">
     <div class="container hero-grid">
       <div>
-        <div class="eyebrow">簡約清爽海洋風 · 網站收藏入口</div>
+        <div class="eyebrow">多風格主題 · 網站收藏入口</div>
         <h1>狐狸網路遊戲之家，收藏你常用的網站。</h1>
-        <p class="lead">首頁保留「拿破崙與秘書」、MQTT 測試發佈器與 IoT Dashboard Pro+。拿破崙與秘書已放在最前面，介紹內容改為符合 54 張、5 人、叫牌與秘書牌規則的撲克牌遊戲說明。</p>
+        <p class="lead">首頁保留「拿破崙與秘書」、MQTT 測試發佈器與 IoT Dashboard Pro+。除了原本海洋風，現在也可切換護眼風、電子紙風、森林風、草原風、櫻花風、暮光風與月光風，並會自動記住你的選擇。</p>
       </div>
       <aside class="hero-card">
         <div class="float-item"><strong>3 個網站</strong><span>撲克牌遊戲與 IoT 工具</span></div>
         <div class="float-item"><strong>首頁直連</strong><span>一鍵開啟原網站</span></div>
         <div class="float-item"><strong>獨立頁面</strong><span>每站各自介紹與雲端留言</span></div>
         <div class="float-item"><strong>留言保存</strong><span>Firebase 雲端共用</span></div>
+        <div class="float-item"><strong>主題切換</strong><span><span data-theme-current>海洋風</span>，另有護眼、電子紙、森林、草原、櫻花、暮光與月光風</span></div>
         <div class="qr-card">
           <a class="qr-link" href="https://fox520-sketch.github.io/fox/" target="_blank" rel="noopener noreferrer">
             <img class="qr-image" src="/fox/assets/qr-fox-station.png" alt="狐狸網路遊戲之家首頁 QR Code" />
@@ -44,7 +50,7 @@
   <main class="container">
     <section class="section-title">
       <h2>網站入口</h2>
-      <p>每張卡片都有「直接前往網站」、「複製網址」與「介紹與留言」。</p>
+      <p>每張卡片都有「直接前往網站」、「複製網址」與「介紹與留言」，上方也能隨時切換網站風格。</p>
     </section>
     <section class="card-grid">
       
@@ -99,7 +105,7 @@
     </section>
   </main>
 
-  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 簡約清爽海洋風網站收藏頁</div></footer>
+  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 可切換多種主題風格</div></footer>
   <script type="module" src="/fox/assets/app.js"></script>
 </body>
 </html>
