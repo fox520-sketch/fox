@@ -28,3 +28,6 @@ Firebase 留言板：
 - 留言改用 Firebase Firestore，所有訪客都能看到。
 - 請先閱讀 FIREBASE_SETUP.md，並到 Firebase Console 貼上 firestore.rules。
 - 每位匿名使用者每個留言區每日最多 5 則，名字 30 字內，留言 300 字內。
+
+
+重要：如果留言顯示「被安全規則拒絕」，請到 Firebase Firestore Rules 貼上並發布本 ZIP 內新版 firestore.rules。

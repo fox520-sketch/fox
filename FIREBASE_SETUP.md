@@ -54,3 +54,12 @@ Firestore Database → Rules
 
 ## 重要限制
 目前每日留言次數是以 Firebase 匿名登入的使用者 ID 判斷。一般訪客會被限制，但如果有人清除瀏覽器資料、換裝置或刻意攻擊，仍可能繞過。若要更嚴格，可再加 Firebase App Check、Cloud Functions 或登入制。
+
+
+## 若看到「留言被安全規則拒絕」
+1. 回到 Firestore Database → Rules。
+2. 確認已貼上本 ZIP 內新版 `firestore.rules` 的全部內容。
+3. 按「Publish / 發布」。
+4. 等 10–30 秒後重新整理網站再測試。
+
+本版修正了每日次數文件第一次不存在時，被安全規則擋下的問題。

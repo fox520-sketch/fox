@@ -229,7 +229,7 @@ document.querySelectorAll('.comments').forEach((box) => {
       if (error.message === 'DAILY_LIMIT_REACHED') {
         setStatus(box, `你今天在這個留言區已達 ${DAILY_LIMIT} 則上限。`, 'error');
       } else if (String(error.code || '').includes('permission-denied')) {
-        setStatus(box, '留言被安全規則拒絕，請確認 Firestore Rules 是否已發布。', 'error');
+        setStatus(box, '留言被安全規則拒絕，請重新貼上並發布新版 firestore.rules。', 'error');
       } else {
         setStatus(box, '留言送出失敗，請稍後再試。', 'error');
       }

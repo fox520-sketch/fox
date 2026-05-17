@@ -25,6 +25,10 @@ service cloud.firestore {
       return day is string && day.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
     }
 
+    function validLimitId(limitId) {
+      return signedIn() && limitId.matches('^' + request.auth.uid + '_[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+    }
+
     function limitPath(siteId, limitId) {
       return /databases/$(database)/documents/sites/$(siteId)/dailyLimits/$(limitId);
     }
@@ -62,7 +66,11 @@ service cloud.firestore {
     }
 
     match /sites/{siteId}/dailyLimits/{limitId} {
-      allow read: if validSite(siteId) && signedIn() && resource.data.uid == request.auth.uid;
+      // The website transaction reads this document before writing it.
+      // The first comment of the day reads a non-existing document, so this rule
+      // must validate by document ID rather than resource.data.
+      allow get: if validSite(siteId) && validLimitId(limitId);
+      allow list: if false;
 
       allow create: if validSite(siteId) &&
         signedIn() &&
