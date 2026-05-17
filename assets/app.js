@@ -28,6 +28,7 @@ const MESSAGE_MAX = 300;
 const ALLOWED_SITES = new Set(["napoleon3", "mqtt-publisher", "iot-dashboard"]);
 const TIME_ZONE = "Asia/Taipei";
 const THEME_KEY = 'fox-theme';
+const THEME_MODE_KEY = 'fox-theme-mode';
 const DEFAULT_THEME = 'ocean';
 const THEMES = [
   ['ocean', '海洋風'],
@@ -40,17 +41,51 @@ const THEMES = [
   ['moonlight', '月光風']
 ];
 
-const applyTheme = (theme) => {
-  const valid = THEMES.some(([value]) => value === theme) ? theme : DEFAULT_THEME;
-  document.documentElement.dataset.theme = valid;
-  try { localStorage.setItem(THEME_KEY, valid); } catch {}
+const themeLabel = (theme) => THEMES.find(([value]) => value === theme)?.[1] || '海洋風';
+const validTheme = (theme) => THEMES.some(([value]) => value === theme) ? theme : DEFAULT_THEME;
+
+const getAutoTheme = () => {
+  const hour = new Date().getHours();
+  if (hour >= 5 && hour < 8) return 'grassland';
+  if (hour >= 8 && hour < 12) return 'eye-care';
+  if (hour >= 12 && hour < 17) return 'ocean';
+  if (hour >= 17 && hour < 20) return 'twilight';
+  if (hour >= 20 || hour < 2) return 'moonlight';
+  return 'e-ink';
+};
+
+const updateThemeControls = (theme, mode = 'manual') => {
   document.querySelectorAll('[data-theme-select]').forEach((select) => {
-    if (select.value !== valid) select.value = valid;
+    if (select.value !== theme) select.value = theme;
   });
-  const label = THEMES.find(([value]) => value === valid)?.[1] || '海洋風';
+  document.querySelectorAll('[data-theme-auto]').forEach((button) => {
+    button.classList.toggle('active', mode === 'auto');
+    button.textContent = mode === 'auto' ? '自動中' : '自動';
+    button.title = mode === 'auto' ? `目前依時間套用：${themeLabel(theme)}` : '依目前時間自動切換主題';
+  });
   document.querySelectorAll('[data-theme-current]').forEach((el) => {
-    el.textContent = label;
+    el.textContent = mode === 'auto' ? `${themeLabel(theme)}（自動）` : themeLabel(theme);
   });
+};
+
+const applyTheme = (theme, options = {}) => {
+  const mode = options.mode || 'manual';
+  const chosen = validTheme(theme);
+  document.documentElement.dataset.theme = chosen;
+  try {
+    localStorage.setItem(THEME_KEY, chosen);
+    localStorage.setItem(THEME_MODE_KEY, mode);
+  } catch {}
+  updateThemeControls(chosen, mode);
+};
+
+const applyAutoTheme = () => applyTheme(getAutoTheme(), { mode: 'auto' });
+
+const applyRandomTheme = () => {
+  const current = document.documentElement.dataset.theme || DEFAULT_THEME;
+  const candidates = THEMES.map(([value]) => value).filter((value) => value !== current);
+  const randomTheme = candidates[Math.floor(Math.random() * candidates.length)] || DEFAULT_THEME;
+  applyTheme(randomTheme, { mode: 'manual' });
 };
 
 const initializeThemeControls = () => {
@@ -63,11 +98,37 @@ const initializeThemeControls = () => {
         select.appendChild(option);
       });
     }
-    select.addEventListener('change', () => applyTheme(select.value));
+    select.addEventListener('change', () => applyTheme(select.value, { mode: 'manual' }));
   });
-  let saved = DEFAULT_THEME;
-  try { saved = localStorage.getItem(THEME_KEY) || document.documentElement.dataset.theme || DEFAULT_THEME; } catch { saved = document.documentElement.dataset.theme || DEFAULT_THEME; }
-  applyTheme(saved);
+
+  document.querySelectorAll('[data-theme-random]').forEach((button) => {
+    button.addEventListener('click', applyRandomTheme);
+  });
+
+  document.querySelectorAll('[data-theme-auto]').forEach((button) => {
+    button.addEventListener('click', applyAutoTheme);
+  });
+
+  let savedTheme = DEFAULT_THEME;
+  let savedMode = 'manual';
+  try {
+    savedTheme = localStorage.getItem(THEME_KEY) || document.documentElement.dataset.theme || DEFAULT_THEME;
+    savedMode = localStorage.getItem(THEME_MODE_KEY) || 'manual';
+  } catch {
+    savedTheme = document.documentElement.dataset.theme || DEFAULT_THEME;
+  }
+
+  if (savedMode === 'auto') {
+    applyAutoTheme();
+  } else {
+    applyTheme(savedTheme, { mode: 'manual' });
+  }
+
+  window.setInterval(() => {
+    try {
+      if (localStorage.getItem(THEME_MODE_KEY) === 'auto') applyAutoTheme();
+    } catch {}
+  }, 10 * 60 * 1000);
 };
 
 const app = initializeApp(firebaseConfig);
