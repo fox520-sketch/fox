@@ -56,20 +56,21 @@
 
     <aside class="panel comments" data-site="napoleon3">
       <h3>拿破崙與秘書 留言板</h3>
-      <p class="hint">這裡的留言只屬於「拿破崙與秘書」頁面，並儲存在你的瀏覽器本機。</p>
+      <p class="hint">留言會儲存在 Firebase Firestore，所有訪客都能看到。每日每人每區最多 5 則；名字 30 字內，留言 300 字內。</p>
       <form>
         <label>你的名字<input name="name" placeholder="例如：Fox" required></label>
         <label>留言內容<textarea name="message" placeholder="寫下你對拿破崙與秘書的想法..." required></textarea></label>
         <div class="button-row">
           <button class="btn primary" type="submit">送出留言</button>
-          <button class="btn ghost" type="button" data-clear>清除留言</button>
+          <button class="btn ghost" type="button" data-clear>清除輸入</button>
         </div>
       </form>
+      <div class="comment-status" data-type="info">留言板載入中...</div>
       <div class="comment-list"></div>
     </aside>
   </main>
 
   <footer class="footer"><div class="container">狐狸網路遊戲之家 · 拿破崙與秘書</div></footer>
-  <script src="/fox/assets/app.js"></script>
+  <script type="module" src="/fox/assets/app.js"></script>
 </body>
 </html>

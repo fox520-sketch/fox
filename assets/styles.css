@@ -86,3 +86,10 @@ h1{margin:18px 0 16px;font-size:clamp(42px,7vw,82px);line-height:1.02;letter-spa
 
 .qr-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:12px}
 .qr-actions .btn{padding:10px 13px;font-size:14px}
+
+
+.comment-status{margin:14px 0 0;padding:11px 13px;border-radius:14px;border:1px solid rgba(12,122,154,.16);background:rgba(255,255,255,.62);color:var(--muted);font-size:14px;font-weight:750}
+.comment-status[data-type="success"]{color:#066b61;background:rgba(32,199,189,.12);border-color:rgba(32,199,189,.24)}
+.comment-status[data-type="error"]{color:#9a3412;background:rgba(255,237,213,.75);border-color:rgba(251,146,60,.24)}
+.btn:disabled{cursor:not-allowed;opacity:.62;transform:none}
+.comments small.limit-note{display:block;color:var(--muted);margin-top:-4px}

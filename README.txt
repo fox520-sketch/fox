@@ -22,3 +22,9 @@
 - assets/qr-fox-station.png：狐狸網路遊戲之家首頁 QR Code
 
 上傳 GitHub Pages 時，請把 index.html、assets/、pages/ 放在 repository 最外層。
+
+
+Firebase 留言板：
+- 留言改用 Firebase Firestore，所有訪客都能看到。
+- 請先閱讀 FIREBASE_SETUP.md，並到 Firebase Console 貼上 firestore.rules。
+- 每位匿名使用者每個留言區每日最多 5 則，名字 30 字內，留言 300 字內。

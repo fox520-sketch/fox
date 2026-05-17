@@ -1,0 +1,92 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function validSite(siteId) {
+      return siteId in ['napoleon3', 'mqtt-publisher', 'iot-dashboard'];
+    }
+
+    function validTextFields() {
+      return request.resource.data.name is string &&
+        request.resource.data.message is string &&
+        request.resource.data.name.size() >= 1 &&
+        request.resource.data.name.size() <= 30 &&
+        request.resource.data.message.size() >= 1 &&
+        request.resource.data.message.size() <= 300 &&
+        !request.resource.data.name.matches('.*[<>].*') &&
+        !request.resource.data.message.matches('.*[<>].*');
+    }
+
+    function validDay(day) {
+      return day is string && day.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$');
+    }
+
+    function limitPath(siteId, limitId) {
+      return /databases/$(database)/documents/sites/$(siteId)/dailyLimits/$(limitId);
+    }
+
+    function validLimitBump(siteId) {
+      let p = limitPath(siteId, request.resource.data.limitId);
+      return existsAfter(p) &&
+        getAfter(p).data.uid == request.auth.uid &&
+        getAfter(p).data.day == request.resource.data.day &&
+        getAfter(p).data.count is int &&
+        getAfter(p).data.count >= 1 &&
+        getAfter(p).data.count <= 5 &&
+        (
+          (!exists(p) && getAfter(p).data.count == 1) ||
+          (exists(p) && getAfter(p).data.count == get(p).data.count + 1)
+        );
+    }
+
+    match /sites/{siteId}/comments/{commentId} {
+      allow read: if validSite(siteId);
+
+      allow create: if validSite(siteId) &&
+        signedIn() &&
+        request.resource.data.keys().hasOnly([
+          'uid', 'name', 'message', 'day', 'limitId', 'createdAt'
+        ]) &&
+        request.resource.data.uid == request.auth.uid &&
+        validDay(request.resource.data.day) &&
+        request.resource.data.limitId == request.auth.uid + '_' + request.resource.data.day &&
+        request.resource.data.createdAt == request.time &&
+        validTextFields() &&
+        validLimitBump(siteId);
+
+      allow update, delete: if false;
+    }
+
+    match /sites/{siteId}/dailyLimits/{limitId} {
+      allow read: if validSite(siteId) && signedIn() && resource.data.uid == request.auth.uid;
+
+      allow create: if validSite(siteId) &&
+        signedIn() &&
+        request.resource.data.keys().hasOnly(['uid', 'day', 'count', 'updatedAt']) &&
+        request.resource.data.uid == request.auth.uid &&
+        validDay(request.resource.data.day) &&
+        limitId == request.auth.uid + '_' + request.resource.data.day &&
+        request.resource.data.count is int &&
+        request.resource.data.count == 1 &&
+        request.resource.data.updatedAt == request.time;
+
+      allow update: if validSite(siteId) &&
+        signedIn() &&
+        resource.data.uid == request.auth.uid &&
+        request.resource.data.keys().hasOnly(['uid', 'day', 'count', 'updatedAt']) &&
+        request.resource.data.uid == resource.data.uid &&
+        request.resource.data.day == resource.data.day &&
+        limitId == request.auth.uid + '_' + resource.data.day &&
+        request.resource.data.count is int &&
+        request.resource.data.count == resource.data.count + 1 &&
+        request.resource.data.count <= 5 &&
+        request.resource.data.updatedAt == request.time;
+
+      allow delete: if false;
+    }
+  }
+}
