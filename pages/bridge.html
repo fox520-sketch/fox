@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>拿破崙與秘書｜狐狸網路遊戲之家</title>
+  <title>合約橋牌｜狐狸網路遊戲之家</title>
   <script>document.documentElement.dataset.theme = localStorage.getItem("fox-theme") || "ocean";</script>
   <link rel="stylesheet" href="/fox/assets/styles.css" />
 </head>
@@ -24,13 +24,13 @@
   <header class="detail-hero">
     <div class="container">
       <a class="breadcrumb" href="/fox/">← 回到首頁</a>
-      <div class="eyebrow">撲克牌遊戲</div>
-      <h1>拿破崙與秘書</h1>
-      <p class="lead">Napoleon3 是撲克牌遊戲「拿破崙與秘書」的網頁版。本版採台灣常見規則：54 張牌、5 人各 10 張、4 張底牌；A/K/Q/J 為「頭／娃娃牌」共 16 張。玩家透過叫牌決定拿破崙，再選王牌、換底牌並指定秘書牌，適合多人休閒對戰。</p>
+      <div class="eyebrow">合約橋牌</div>
+      <h1>合約橋牌</h1>
+      <p class="lead">Contract Bridge Online 是合約橋牌網頁版，支援標準夢家亮牌模式，也提供閉手四人暗牌變體；可單人練習，也可透過 Firebase 建立 4 人房間、加入房間或觀戰。</p>
       <p class="theme-note">可從上方選擇海洋、護眼、電子紙、森林、草原、櫻花、暮光與月光等風格，也能用隨機或自動模式；系統會自動記住你的設定。</p>
       <div class="button-row" style="margin-top:22px">
-        <a class="btn primary" href="https://fox520-sketch.github.io/napoleon3/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
-        <button class="btn copy" type="button" data-copy-url="https://fox520-sketch.github.io/napoleon3/">複製網址</button>
+        <a class="btn primary" href="https://fox520-sketch.github.io/bridge/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+        <button class="btn copy" type="button" data-copy-url="https://fox520-sketch.github.io/bridge/">複製網址</button>
         <a class="btn ghost" href="/fox/">回首頁看全部網站</a>
       </div>
     </div>
@@ -38,15 +38,13 @@
 
   <main class="container detail-layout">
     <section class="panel">
-      <h2>玩法摘要</h2>
+      <h2>主要功能</h2>
       <ul class="feature-list">
-        <li><strong>台灣常見 54 張玩法</strong><span>使用 54 張牌，5 人各 10 張，剩下 4 張作為底牌。</span></li>
-        <li><strong>頭／娃娃牌計分核心</strong><span>A、K、Q、J 都算「頭／娃娃牌」，合計 16 張，是叫牌與勝負目標的重點。</span></li>
-        <li><strong>叫牌 9–16 頭</strong><span>玩家可叫 9 到 16 頭，最高叫者成為拿破崙，承擔取得足夠頭牌的目標。</span></li>
-        <li><strong>王牌、底牌與秘書</strong><span>拿破崙選定王牌、換入底牌後，再指定一張秘書牌；持有該牌者成為秘密隊友。</span></li>
-        <li><strong>牌力順位清楚</strong><span>秘書牌最大；其後依序為大鬼、小鬼、王牌、首引花色。</span></li>
-        <li><strong>可選變體規則</strong><span>可選「末三輪鬼牌變小」與「前三輪王牌 2/3 召鬼」，增加策略與變化。</span></li>
-        <li><strong>多人休閒對戰</strong><span>多人版採房主瀏覽器作為牌局主持端，適合朋友開房進行休閒對戰。</span></li>
+        <li><strong>標準與變體模式</strong><span>標準模式採夢家亮牌流程；閉手變體則取消夢家亮牌，四手暗牌各自出牌。</span></li>
+        <li><strong>單人直接練習</strong><span>不用登入即可由南家玩家搭配 3 位電腦開始，適合新手熟悉叫牌、跟牌與計分。</span></li>
+        <li><strong>Firebase 多人房間</strong><span>可建立房間、加入房間或觀戰，四個座位固定為北、東、南、西。</span></li>
+        <li><strong>Chicago 計分與難度</strong><span>支援單副練習與 Chicago 4 / 8 / 12 / 16 副制，並可調整電腦難度與遊戲節奏。</span></li>
+        <li><strong>牌局回放與檢討</strong><span>結束後可查看逐墩紀錄、牌譜與回放，方便分享、教學與賽後檢討。</span></li>
       </ul>
     </section>
 
@@ -62,12 +60,12 @@
       </div>
     </aside>
 
-    <aside class="panel comments" data-site="napoleon3">
-      <h3>拿破崙與秘書 留言板</h3>
+    <aside class="panel comments" data-site="bridge">
+      <h3>合約橋牌 留言板</h3>
       <p class="hint">留言會儲存在 Firebase Firestore，所有訪客都能看到。每日每人每區最多 5 則；名字 30 字內，留言 300 字內。</p>
       <form>
         <label>你的名字<input name="name" placeholder="例如：Fox" required></label>
-        <label>留言內容<textarea name="message" placeholder="寫下你對拿破崙與秘書的想法..." required></textarea></label>
+        <label>留言內容<textarea name="message" placeholder="寫下你對合約橋牌的想法..." required></textarea></label>
         <div class="button-row">
           <button class="btn primary" type="submit">送出留言</button>
           <button class="btn ghost" type="button" data-clear>清除輸入</button>
@@ -78,7 +76,7 @@
     </aside>
   </main>
 
-  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 拿破崙與秘書</div></footer>
+  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 合約橋牌</div></footer>
   <script type="module" src="/fox/assets/app.js"></script>
 </body>
 </html>
