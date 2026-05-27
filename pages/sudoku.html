@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>合約橋牌｜狐狸網路遊戲之家</title>
+  <title>數字獵局｜狐狸網路遊戲之家</title>
   <script>document.documentElement.dataset.theme = localStorage.getItem("fox-theme") || "ocean";</script>
   <link rel="stylesheet" href="/fox/assets/styles.css" />
 </head>
@@ -24,13 +24,13 @@
   <header class="detail-hero">
     <div class="container">
       <a class="breadcrumb" href="/fox/">← 回到首頁</a>
-      <div class="eyebrow">合約橋牌</div>
-      <h1>合約橋牌</h1>
-      <p class="lead">Contract Bridge Online 是合約橋牌網頁版，支援標準夢家亮牌模式，也提供閉手四人暗牌變體；可單人練習，也可透過 Firebase 建立 4 人房間、加入房間或觀戰。</p>
+      <div class="eyebrow">數獨遊戲</div>
+      <h1>數字獵局</h1>
+      <p class="lead">Number Hunt 是數獨網頁遊戲，可自動產生唯一解題目，支援 1～20 級難度、分享同一題網址、多人即時房間、手機操作、鍵盤輸入、筆記、提示、多種主題風格與電腦解題教學。</p>
       <p class="theme-note">可從上方選擇海洋、護眼、電子紙、森林、草原、櫻花、暮光與月光等風格，也能用隨機或自動模式；系統會自動記住你的設定。</p>
       <div class="button-row" style="margin-top:22px">
-        <a class="btn primary" href="https://fox520-sketch.github.io/bridge/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
-        <button class="btn copy" type="button" data-copy-url="https://fox520-sketch.github.io/bridge/">複製網址</button>
+        <a class="btn primary" href="https://fox520-sketch.github.io/sudoku/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+        <button class="btn copy" type="button" data-copy-url="https://fox520-sketch.github.io/sudoku/">複製網址</button>
         <a class="btn ghost" href="/fox/">回首頁看全部網站</a>
       </div>
     </div>
@@ -40,11 +40,11 @@
     <section class="panel">
       <h2>主要功能</h2>
       <ul class="feature-list">
-        <li><strong>標準與變體模式</strong><span>標準模式採夢家亮牌流程；閉手變體則取消夢家亮牌，四手暗牌各自出牌。</span></li>
-        <li><strong>單人直接練習</strong><span>不用登入即可由南家玩家搭配 3 位電腦開始，適合新手熟悉叫牌、跟牌與計分。</span></li>
-        <li><strong>Firebase 多人房間</strong><span>可建立房間、加入房間或觀戰，四個座位固定為北、東、南、西。</span></li>
-        <li><strong>Chicago 計分與難度</strong><span>支援單副練習與 Chicago 4 / 8 / 12 / 16 副制，並可調整電腦難度與遊戲節奏。</span></li>
-        <li><strong>牌局回放與檢討</strong><span>結束後可查看逐墩紀錄、牌譜與回放，方便分享、教學與賽後檢討。</span></li>
+        <li><strong>唯一解題目</strong><span>系統自動產生數獨題目，並提供 1～20 級難度，適合從入門練習到進階挑戰。</span></li>
+        <li><strong>分享同一題</strong><span>可複製含題目種子的網址，把同一盤數獨分享給朋友一起挑戰。</span></li>
+        <li><strong>多人即時房間</strong><span>建立房間後可把連結傳給朋友，大家同步同一盤填數字進度，並分開統計每位玩家的正確填入格數。</span></li>
+        <li><strong>筆記、提示與檢查</strong><span>支援筆記模式、清除、提示、檢查與鍵盤快捷鍵，手機與電腦都能操作。</span></li>
+        <li><strong>電腦解題教學</strong><span>可從原題開始逐步示範解法，說明候選數、唯一候選、隱性唯一與必要時的進階推理。</span></li>
       </ul>
     </section>
 
@@ -60,12 +60,12 @@
       </div>
     </aside>
 
-    <aside class="panel comments" data-site="bridge">
-      <h3>合約橋牌 留言板</h3>
+    <aside class="panel comments" data-site="sudoku">
+      <h3>數字獵局 留言板</h3>
       <p class="hint">留言會儲存在 Firebase Firestore，所有訪客都能看到。每日每人每區最多 5 則；名字 30 字內，留言 300 字內。</p>
       <form>
         <label>你的名字<input name="name" placeholder="例如：Fox" required></label>
-        <label>留言內容<textarea name="message" placeholder="寫下你對合約橋牌的想法..." required></textarea></label>
+        <label>留言內容<textarea name="message" placeholder="寫下你對數字獵局的想法..." required></textarea></label>
         <div class="button-row">
           <button class="btn primary" type="submit">送出留言</button>
           <button class="btn ghost" type="button" data-clear>清除輸入</button>
@@ -76,7 +76,7 @@
     </aside>
   </main>
 
-  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 合約橋牌</div></footer>
+  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 數字獵局</div></footer>
   <script type="module" src="/fox/assets/app.js"></script>
 </body>
 </html>
