@@ -38,7 +38,9 @@ const THEMES = [
   ['grassland', '草原風'],
   ['sakura', '櫻花風'],
   ['twilight', '暮光風'],
-  ['moonlight', '月光風']
+  ['moonlight', '月光風'],
+  ['oled-dark', '深色模式（OLED黑底）'],
+  ['mono', '黑白模式（電子紙）']
 ];
 
 const themeLabel = (theme) => THEMES.find(([value]) => value === theme)?.[1] || '海洋風';
@@ -50,8 +52,8 @@ const getAutoTheme = () => {
   if (hour >= 8 && hour < 12) return 'eye-care';
   if (hour >= 12 && hour < 17) return 'ocean';
   if (hour >= 17 && hour < 20) return 'twilight';
-  if (hour >= 20 || hour < 2) return 'moonlight';
-  return 'e-ink';
+  if (hour >= 20 || hour < 2) return 'oled-dark';
+  return 'mono';
 };
 
 const updateThemeControls = (theme, mode = 'manual') => {
