@@ -7,7 +7,7 @@ service cloud.firestore {
     }
 
     function validSite(siteId) {
-      return siteId in ['napoleon3', 'bridge', 'sudoku', 'gomoku', 'whack', 'mqtt-publisher', 'iot-dashboard'];
+      return siteId in ['napoleon3', 'bridge', 'sudoku', 'gomoku', 'whack', 'idiom-game', 'mqtt-publisher', 'iot-dashboard'];
     }
 
     function validTextFields() {
