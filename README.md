@@ -4,11 +4,12 @@
 這是一個簡約清爽海洋風的靜態網站收藏頁，已針對 GitHub Pages 路徑 /fox/ 設定完成。
 
 本版更新：
-- 保留 8 個網站：拿破崙與秘書、合約橋牌、數字獵局、黑白五子風雲、鼠叔出沒、成語大挑戰、MQTT 測試發佈器、IoT Dashboard Pro+
+- 保留 9 個網站：拿破崙與秘書、台灣大老二、合約橋牌、數字獵局、黑白五子風雲、鼠叔出沒、成語大挑戰、MQTT 測試發佈器、IoT Dashboard Pro+
 - 拿破崙與秘書放在首頁最前面，並新增合約橋牌、數字獵局、黑白五子風雲與鼠叔出沒入口
 - Napoleon3 介紹已更新為撲克牌遊戲「拿破崙與秘書」內容
 - 遊戲說明包含：54 張、5 人各 10 張、4 張底牌、A/K/Q/J 頭牌、叫牌 9–16 頭、王牌、底牌、秘書牌、牌力順位、變體規則與多人休閒對戰
 - 已刪除 4 個舊網站的介紹頁與首頁卡片
+- 新增台灣大老二介紹頁與首頁卡片：https://fox520-sketch.github.io/big2/
 - 新增合約橋牌介紹頁與首頁卡片：https://fox520-sketch.github.io/bridge/
 - 新增數字獵局介紹頁與首頁卡片：https://fox520-sketch.github.io/sudoku/
 - 新增黑白五子風雲介紹頁與首頁卡片：https://fox520-sketch.github.io/gomoku/
@@ -20,6 +21,7 @@
 檔案結構：
 - index.html：首頁
 - pages/napoleon3.html：拿破崙與秘書介紹與留言頁
+- pages/big2.html：台灣大老二介紹與留言頁
 - pages/bridge.html：合約橋牌介紹與留言頁
 - pages/sudoku.html：數字獵局介紹與留言頁
 - pages/gomoku.html：黑白五子風雲介紹與留言頁
