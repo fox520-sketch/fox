@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>鼠叔出沒｜狐狸網路遊戲之家</title>
+  <title>雙軌跡紀錄器｜狐狸網路遊戲之家</title>
   <script>try{document.documentElement.dataset.theme=localStorage.getItem("fox-theme")||"ocean";}catch(e){document.documentElement.dataset.theme="ocean";}</script>
   <link rel="stylesheet" href="/fox/assets/styles.css" />
 </head>
@@ -24,13 +24,13 @@
   <header class="detail-hero">
     <div class="container">
       <a class="breadcrumb" href="/fox/">← 回到首頁</a>
-      <div class="eyebrow">反應遊戲</div>
-      <h1>鼠叔出沒</h1>
-      <p class="lead">鼠叔出沒是支援電腦、平板與手機觸控的打地鼠反應遊戲。可以單人練習，也能建立 Firebase 多人房間，選擇合作共分或競賽計分。</p>
-      <p class="theme-note">遊戲包含 1～20 級難度、30 / 45 / 60 / 90 秒局數、特殊地鼠、合作任務、成就系統與全站排行榜，並支援自訂地鼠圖片與打中／沒打中音效。</p>
+      <div class="eyebrow">PWA 軌跡紀錄工具</div>
+      <h1>雙軌跡紀錄器</h1>
+      <p class="lead">雙軌跡紀錄器能在同一張地圖比較 GPS 定位軌跡與方向感測／步伐推算軌跡，適合步行測試、感測器比較、路線記錄與軌跡校正。</p>
+      <p class="theme-note">目前網站為 V1.4.0 PWA 網頁版。支援 GPS 與步伐軌跡獨立顯示、步伐位置對齊 GPS、標定點、GPX 匯出、GPX／KML 參考軌跡、IndexedDB 歷史紀錄、軌跡顏色及地圖圖磚設定。</p>
       <div class="button-row" style="margin-top:22px">
-        <a class="btn primary" href="https://fox520-sketch.github.io/whack/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
-        <button class="btn copy" type="button" data-copy-url="https://fox520-sketch.github.io/whack/">複製網址</button>
+        <a class="btn primary" href="https://fox520-sketch.github.io/dual-track/" target="_blank" rel="noopener noreferrer">直接前往網站</a>
+        <button class="btn copy" type="button" data-copy-url="https://fox520-sketch.github.io/dual-track/">複製網址</button>
         <a class="btn ghost" href="/fox/">回首頁看全部網站</a>
       </div>
     </div>
@@ -40,11 +40,11 @@
     <section class="panel">
       <h2>主要功能</h2>
       <ul class="feature-list">
-        <li><strong>單人與多人玩法</strong><span>單人可快速練反應；多人房間可透過房號、邀請連結或 QR Code 分享給朋友加入。</span></li>
-        <li><strong>合作與競賽計分</strong><span>合作共分模式讓所有玩家累積同一個團隊分數；競賽模式則每位玩家各自計分。</span></li>
-        <li><strong>豐富遊戲設定</strong><span>可調整難易度、遊戲秒數、任務模式、主題風格、地鼠圖案與音效。</span></li>
-        <li><strong>房主控制</strong><span>房主可鎖定房間、重開本局、清除離線玩家，也能在房間榜管理玩家。</span></li>
-        <li><strong>成就與排行榜</strong><span>完成指定目標會解鎖成就，結算後可送出今日、本週與歷史最高排行榜。</span></li>
+        <li><strong>雙軌跡同步比較</strong><span>同時顯示 GPS 與方向／步伐推算結果，可各別切換、檢視全線或使用全螢幕地圖。</span></li>
+        <li><strong>步伐位置校正</strong><span>當步伐推算逐漸漂移時，可把目前步伐位置對齊最新 GPS 點，既有步數、距離與軌跡不會被清除。</span></li>
+        <li><strong>紀錄與匯出</strong><span>提供開始、暫停、停止、標定點、目前位置分享與 GPX 匯出，完成紀錄可保存在瀏覽器的 IndexedDB。</span></li>
+        <li><strong>參考軌跡</strong><span>可匯入 GPX 或 KML 檔案，並在目前瀏覽器中個別顯示、定位或刪除，方便比對既有路線。</span></li>
+        <li><strong>PWA 與個人化設定</strong><span>支援安裝到手機，並可調整步長、感測靈敏度、GPS 過濾條件、三種軌跡顏色、XYZ 地圖圖磚與螢幕喚醒。</span></li>
       </ul>
     </section>
 
@@ -60,12 +60,12 @@
       </div>
     </aside>
 
-    <aside class="panel comments" data-site="whack">
-      <h3>鼠叔出沒 留言板</h3>
+    <aside class="panel comments" data-site="dual-track">
+      <h3>雙軌跡紀錄器 留言板</h3>
       <p class="hint">留言會儲存在 Firebase Firestore，所有訪客都能看到。每日每人每區最多 5 則；名字 30 字內，留言 300 字內。</p>
       <form>
         <label>你的名字<input name="name" placeholder="例如：Fox" required></label>
-        <label>留言內容<textarea name="message" placeholder="寫下你對鼠叔出沒的想法..." required></textarea></label>
+        <label>留言內容<textarea name="message" placeholder="寫下你對雙軌跡紀錄器的想法..." required></textarea></label>
         <div class="button-row">
           <button class="btn primary" type="submit">送出留言</button>
           <button class="btn ghost" type="button" data-clear>清除輸入</button>
@@ -76,7 +76,7 @@
     </aside>
   </main>
 
-  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 鼠叔出沒</div></footer>
+  <footer class="footer"><div class="container">狐狸網路遊戲之家 · 雙軌跡紀錄器</div></footer>
   <script type="module" src="/fox/assets/app.js"></script>
 </body>
 </html>

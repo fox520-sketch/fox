@@ -4,7 +4,7 @@
 這是一個簡約清爽海洋風的靜態網站收藏頁，已針對 GitHub Pages 路徑 /fox/ 設定完成。
 
 本版更新：
-- 保留 9 個網站：拿破崙與秘書、台灣大老二、合約橋牌、數字獵局、黑白五子風雲、鼠叔出沒、成語大挑戰、MQTT 測試發佈器、IoT Dashboard Pro+
+- 保留 10 個網站：拿破崙與秘書、台灣大老二、合約橋牌、數字獵局、黑白五子風雲、鼠叔出沒、成語大挑戰、雙軌跡紀錄器、MQTT 測試發佈器、IoT Dashboard Pro+
 - 拿破崙與秘書放在首頁最前面，並新增合約橋牌、數字獵局、黑白五子風雲與鼠叔出沒入口
 - Napoleon3 介紹已更新為撲克牌遊戲「拿破崙與秘書」內容
 - 遊戲說明包含：54 張、5 人各 10 張、4 張底牌、A/K/Q/J 頭牌、叫牌 9–16 頭、王牌、底牌、秘書牌、牌力順位、變體規則與多人休閒對戰
@@ -15,6 +15,7 @@
 - 新增黑白五子風雲介紹頁與首頁卡片：https://fox520-sketch.github.io/gomoku/
 - 新增鼠叔出沒介紹頁與首頁卡片：https://fox520-sketch.github.io/whack/
 - 新增成語大挑戰介紹頁與首頁卡片：https://fox520-sketch.github.io/idiom-game/
+- 新增雙軌跡紀錄器介紹頁與首頁卡片：https://fox520-sketch.github.io/dual-track/
 - 每個保留網站都有「直接前往網站」、「複製網址」、「介紹與留言」
 - QR Code 指向狐狸網路遊戲之家首頁：https://fox520-sketch.github.io/fox/
 
@@ -27,6 +28,7 @@
 - pages/gomoku.html：黑白五子風雲介紹與留言頁
 - pages/whack.html：鼠叔出沒介紹與留言頁
 - pages/idiom-game.html：成語大挑戰介紹與留言頁
+- pages/dual-track.html：雙軌跡紀錄器介紹與留言頁
 - pages/mqtt-publisher.html：MQTT 測試發佈器介紹與留言頁
 - pages/iot-dashboard.html：IoT Dashboard Pro+ 介紹與留言頁
 - assets/styles.css：共用樣式
